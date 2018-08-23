@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'user deletes an article' do
   describe 'they link from the show page' do
@@ -6,7 +6,7 @@ describe 'user deletes an article' do
       article_1 = Article.create!(title: "Heavenly", body: "Things")
       article_2 = Article.create!(title: "Friends", body: "In Low Places")
 
-      visit_article_path(article_1)
+      visit article_path(article_1)
       click_link "Delete"
 
       expect(current_path).to eq(articles_path)
