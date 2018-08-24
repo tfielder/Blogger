@@ -10,15 +10,16 @@ describe 'user edits an article' do
       click_link article.title
       click_link "Edit"
 
-      expect(current_path).to eq(edit_article_path)
+      expect(current_path).to eq(edit_article_path(article))
 
       fill_in "article[title]", with: "New Title!"
       fill_in "article[body]", with: "New Body!"
 
-      click_on "Save"
+      click_on "Update Article"
 
       expect(page).to have_content("New Title!")
       expect(page).to have_content("New Body!")
+      expect(page).to have_content("Article #{@article.title} Updated!")
     end
   end
 end
