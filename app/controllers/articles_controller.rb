@@ -15,11 +15,17 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.save
+
+    flash.notice = "You created #{@article.title}"
+    
     redirect_to article_path(@article)
   end
 
   def destroy
     @article.destroy
+
+    flash.notice = "You deleted #{@article.title}"
+
     redirect_to articles_path
   end
 
